@@ -1,0 +1,53 @@
+# Created at 2022-07-31T18:45:50.022
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:398)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+
+# Created at 2022-07-31T18:45:50.635
+Unexpected IOException with stream: 2022-07-31 18:45:50.634  INFO 11984 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+
+
+# Created at 2022-07-31T18:45:52.890
+Unexpected IOException with stream: Hibernate: create table customer (id int4 not null, email varchar(255), first_name varchar(255), last_name varchar(255), primary key (id))
+
+
+# Created at 2022-07-31T18:45:52.931
+Unexpected IOException with stream: Hibernate: create sequence hibernate_sequence start 1 increment 1
+
+
+# Created at 2022-07-31T18:45:52.937
+Unexpected IOException with stream: 2022-07-31 18:45:52.936  INFO 11984 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+
+
+# Created at 2022-07-31T18:45:52.954
+Unexpected IOException with stream: 2022-07-31 18:45:52.952  INFO 11984 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+
+# Created at 2022-07-31T18:45:53.924
+Unexpected IOException with stream: 2022-07-31 18:45:53.922  WARN 11984 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+# Created at 2022-07-31T18:45:54.517
+Unexpected IOException with stream: 2022-07-31 18:45:54.516  INFO 11984 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+
+
+# Created at 2022-07-31T18:45:55.126
+Unexpected IOException with stream: 2022-07-31 18:45:55.124  INFO 11984 --- [           main] .s.SpringMvcHibernateCrmApplicationTests : Started SpringMvcHibernateCrmApplicationTests in 8.036 seconds (JVM running for 9.283)
+
+
+# Created at 2022-07-31T18:45:55.182
+Unexpected IOException: 5,1,com.example.springmvchibernatecrm.SpringMvcHibernateCrmApplicationTests,contextLoads,null,null,null
+
+
+# Created at 2022-07-31T18:45:55.507
+Unexpected IOException: 6,1,com.example.springmvchibernatecrm.SpringMvcHibernateCrmApplicationTests,contextLoads,null,null,null
+
+
+# Created at 2022-07-31T18:45:55.518
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,com.example.springmvchibernatecrm.SpringMvcHibernateCrmApplicationTests,null,null,null
+
+

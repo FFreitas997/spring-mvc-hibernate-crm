@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <title>List Customers</title>
     <link type="text/css" rel="stylesheet" href="../css/style.css">
-    <link type="text/css" rel="stylesheet" href="../css/add-customer-style.css">
-    <script rel="script" type="javascript" src="../js/main.js"></script>
+<%--    <link type="text/css" rel="stylesheet" href="../css/add-customer-style.css">--%>
+   <%-- <script rel="script" type="javascript" src="../js/main.js"></script>--%>
 </head>
 
 <body>
