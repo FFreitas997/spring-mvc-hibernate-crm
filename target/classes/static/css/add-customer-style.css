@@ -1,0 +1,43 @@
+form {
+	margin-top: 10px !important;
+}
+
+label {
+	font-size: 16px !important;
+	width: 100px !important;
+	display: block !important;
+	text-align: right !important;
+	margin-right: 10px !important;
+	margin-top: 8px !important;
+	margin-bottom: 8px !important;
+}
+
+input {
+	width: 250px !important;
+	border: 1px solid #666 !important;
+	border-radius: 5px !important;
+	padding: 4px !important;
+	font-size: 16px !important;
+}
+
+.save {
+	font-weight: bold;
+	width: 130px; 
+	padding: 5px 10px; 
+	margin-top: 30px;
+	background: #cccccc;
+}
+
+table {   
+	border-style:none !important;
+	width:50% !important;
+}
+
+tr:nth-child(even) {background: #FFFFFF !important}
+tr:nth-child(odd) {background: #FFFFFF !important}
+
+tr {
+	border-style:none !important;
+	text-align:left !important;
+}
+	
