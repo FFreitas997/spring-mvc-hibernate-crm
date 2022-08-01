@@ -20,6 +20,8 @@ public class CustomerDTO {
         this.email = email;
     }
 
+    public CustomerDTO(){}
+
     public String getFirstName() {
         return firstName;
     }
@@ -49,5 +51,10 @@ public class CustomerDTO {
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(email);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Customer :: \t First Name -> %s \t Last Name -> %s \t Email -> %s", firstName, lastName, email);
     }
 }

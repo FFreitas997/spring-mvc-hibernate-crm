@@ -14,10 +14,11 @@ public class StatusCodeMessage {
         statusCodeMap.put(401, "Unauthorized");
         statusCodeMap.put(403, "Forbidden");
         statusCodeMap.put(404, "Not Found");
+        statusCodeMap.put(405, "Method Not Allowed");
         statusCodeMap.put(500, "Internal Server Error");
     }
 
     public String getMessageByStatus(Integer statusCode) {
-        return statusCodeMap.containsKey(statusCode) ? statusCodeMap.get(statusCode) : "Status code " + statusCode + "dont exists in Status Code Map";
+        return statusCodeMap.containsKey(statusCode) ? statusCodeMap.get(statusCode) : "Status code " + statusCode + ": dont exists in Status Code Map";
     }
 }

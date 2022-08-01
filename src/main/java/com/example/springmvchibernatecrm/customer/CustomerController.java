@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -35,7 +32,7 @@ public class CustomerController {
     @GetMapping("/list")
     public String getListOfCustomers(Model model) throws ResourceNotFoundException {
         logger.info("GET /customers/list requested");
-        List<Customer> customers = service.getCustomers();
+        List<Customer> customers = service.getCustomersSorted("asc","firstName");
         customers.forEach((Customer customer) -> logger.info(customer.toString()));
         if (customers.isEmpty()) {
             throw new ResourceNotFoundException(messageErrorEmptyListCustomer);
@@ -44,12 +41,20 @@ public class CustomerController {
         return "customers/list-customers";
     }
 
+    @GetMapping("/showForm")
+    public String getShowForm(Model model) {
+        CustomerDTO customerDTO = new CustomerDTO();
+        model.addAttribute("customer", customerDTO);
+        return "customers/form-customer";
+    }
+
     @PostMapping("/create")
-    public String createCustomer(@Valid @RequestBody CustomerDTO customerDTO, BindingResult bindingResult) throws BadRequestException {
+    public String createCustomer(@Valid @ModelAttribute("customer") CustomerDTO customerDTO, BindingResult bindingResult) throws BadRequestException {
+        logger.info(customerDTO.toString());
         if (bindingResult.hasErrors()) {
             throw new BadRequestException(messageErrorCreateCustomer, bindingResult);
         }
         this.service.createCustomer(customerDTO.toCustomer());
-        return "customers/create-customer";
+        return "redirect:/customer/list";
     }
 }

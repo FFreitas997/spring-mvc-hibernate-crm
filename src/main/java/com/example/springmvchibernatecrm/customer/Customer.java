@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Table(name = "customer")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_customer")
+    @SequenceGenerator(sequenceName = "seq_customer", name = "seq_customer", initialValue = 6)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -54,9 +55,11 @@ public class Customer {
         this.id = id;
     }
 
-    public Customer() {}
+    public Customer() {
+    }
 
     public Customer(String firstName, String lastName, String email) {
+        this.id = 0;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
