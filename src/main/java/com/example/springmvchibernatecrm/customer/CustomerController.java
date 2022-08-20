@@ -5,6 +5,7 @@ import com.example.springmvchibernatecrm.exceptions.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,11 +33,10 @@ public class CustomerController {
     @GetMapping("/list")
     public String getListOfCustomers(Model model) throws ResourceNotFoundException {
         logger.info("GET /customers/list requested");
-        List<Customer> customers = service.getCustomersSorted("asc","firstName");
-        customers.forEach((Customer customer) -> logger.info(customer.toString()));
-        if (customers.isEmpty()) {
+        List<Customer> customers = service.getCustomersSorted("asc", "firstName");
+        if (customers.isEmpty())
             throw new ResourceNotFoundException(messageErrorEmptyListCustomer);
-        }
+        customers.forEach((Customer customer) -> logger.info(customer.toString()));
         model.addAttribute("customers", customers);
         return "customers/list-customers";
     }
@@ -52,9 +52,22 @@ public class CustomerController {
     public String createCustomer(@Valid @ModelAttribute("customer") CustomerDTO customerDTO, BindingResult bindingResult) throws BadRequestException {
         logger.info(customerDTO.toString());
         if (bindingResult.hasErrors()) {
-            throw new BadRequestException(messageErrorCreateCustomer, bindingResult);
+            throw new BadRequestException(messageErrorCreateCustomer, bindingResult.getFieldErrors());
         }
         this.service.createCustomer(customerDTO.toCustomer());
+        return "redirect:/customer/list";
+    }
+
+    @GetMapping("/showFormUpdate")
+    public String getShowFormUpdateCustomer(@RequestParam("customerID") Integer id, Model model) {
+        Customer customer = service.getCustomerByID(id);
+        model.addAttribute("customer", customer);
+        return "customers/form-customer";
+    }
+
+    @GetMapping("/delete")
+    public String deleteCustomer(@RequestParam("customerID") Integer id) {
+        service.deleteCustomerByID(id);
         return "redirect:/customer/list";
     }
 }

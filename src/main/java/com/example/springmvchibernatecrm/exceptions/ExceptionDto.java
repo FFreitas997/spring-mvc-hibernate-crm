@@ -1,19 +1,29 @@
 package com.example.springmvchibernatecrm.exceptions;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class ExceptionDto extends StatusCodeMessage {
     private int statusCode;
     private String errorMessage;
     private String requestURI;
 
-    public ExceptionDto(int statusCode, String errorMessage, String requestURI) {
+    private final HashMap<String, List<String>> hashMap = new HashMap<>();
+
+    public ExceptionDto(int statusCode, String errorMessage, String requestURI, List<String> errorMessages) {
         super();
         this.statusCode = statusCode;
         this.errorMessage = errorMessage;
         this.requestURI = requestURI;
+        this.hashMap.put("errors", errorMessages);
     }
 
     public int getStatusCode() {
         return statusCode;
+    }
+
+    public HashMap<String, List<String>> getHashMap() {
+        return hashMap;
     }
 
     public void setStatusCode(int statusCode) {

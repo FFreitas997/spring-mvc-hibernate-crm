@@ -6,12 +6,16 @@ import javax.validation.constraints.Pattern;
 
 public class CustomerDTO {
 
+    private Integer id;
     @NotEmpty(message = "First name is required")
     private String firstName;
     @NotEmpty(message = "Last name is required")
     private String lastName;
     @NotEmpty(message = "Email is required")
-    @Pattern(message = "Email format invalid", regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")
+    @Pattern(
+            message = "Email format invalid",
+            regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+    )
     private String email;
 
     public CustomerDTO(String firstName, String lastName, String email) {
@@ -46,15 +50,21 @@ public class CustomerDTO {
         this.email = email;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
     public Customer toCustomer(){
-        return new Customer()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(email);
+        return new Customer(firstName, lastName, email).setId(id);
     }
 
     @Override
     public String toString() {
-        return String.format("Customer :: \t First Name -> %s \t Last Name -> %s \t Email -> %s", firstName, lastName, email);
+        return String.format("Customer :: \t First Name -> %s \t Last Name -> %s \t Email -> %s \t ID -> %d", firstName, lastName, email, id);
     }
 }

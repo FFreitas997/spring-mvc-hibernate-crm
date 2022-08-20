@@ -7,8 +7,6 @@
     <meta charset="UTF-8">
     <title>List Customers</title>
     <link type="text/css" rel="stylesheet" href="../css/style.css">
-<%--    <link type="text/css" rel="stylesheet" href="../css/add-customer-style.css">--%>
-   <%-- <script rel="script" type="javascript" src="../js/main.js"></script>--%>
 </head>
 
 <body>
@@ -30,13 +28,27 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
+                <th>Action</th>
             </tr>
 
             <c:forEach var="tempCustomer" items="${customers}">
+
+                <c:url var="updateLink" value="/customer/showFormUpdate">
+                    <c:param name="customerID" value="${tempCustomer.id}" />
+                </c:url>
+
+                <c:url var="deleteLink" value="/customer/delete">
+                    <c:param name="customerID" value="${tempCustomer.id}" />
+                </c:url>
+
                 <tr>
                     <td>${tempCustomer.firstName}</td>
                     <td>${tempCustomer.lastName}</td>
                     <td>${tempCustomer.email}</td>
+                    <td>
+                        <a href="${updateLink}">Update</a> |
+                        <a onclick="if (!(confirm('Are you sure you want to delete this customer ?'))) return false" href="${deleteLink}">Delete</a>
+                    </td>
                 </tr>
             </c:forEach>
 

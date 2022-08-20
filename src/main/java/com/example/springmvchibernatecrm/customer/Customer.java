@@ -51,15 +51,15 @@ public class Customer {
         return id;
     }
 
-    public void setId(Integer id) {
+    public Customer setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public Customer() {
     }
 
     public Customer(String firstName, String lastName, String email) {
-        this.id = 0;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

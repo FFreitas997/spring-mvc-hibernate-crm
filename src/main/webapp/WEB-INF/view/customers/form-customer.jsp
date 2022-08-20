@@ -22,6 +22,7 @@
         <h3>Save Customer</h3>
         <%--@elvariable id="customer" type="com.example.springmvchibernatecrm.customer.CustomerDTO"--%>
         <form:form action="create" modelAttribute="customer" method="POST">
+            <form:hidden path="id" />
             <table>
                 <tbody>
                 <tr>
